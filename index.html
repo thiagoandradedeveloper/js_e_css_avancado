@@ -1,18 +1,36 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <style id="dynamic-styles"></style>
 </head>
 <body>
-    <p>Thiago Andrade</p>
-    <script>
-        // Obtendo a referência para a folha de estilo
-        var stylesheet = document.styleSheets[0];
+  <h1>Exemplo de inserção de regra de estilo dinâmica</h1>
+  <p class="highlight">Este parágrafo terá um plano de fundo amarelo.</p>
 
-        // Inserindo uma nova regra na folha de estilo
-        stylesheet.insertRule("p { color: red; }", 0);
-    </script>
+  <script>
+    // Obtendo a referência para a folha de estilo
+    var stylesheet = document.getElementById('dynamic-styles').sheet;
+
+    // Definindo a nova regra CSS
+    var rule = ".highlight { background-color: yellow; padding: 10px; }";
+
+    // Inserindo a nova regra na folha de estilo
+    stylesheet.insertRule(rule, 0);
+
+    // Removendo a regra no índice 0
+    stylesheet.deleteRule(0);
+
+    /*addRule: Este método é semelhante ao insertRule, mas é usado para adicionar 
+    uma regra de estilo em navegadores mais antigos, como o Internet Explorer.*/
+    // Obtendo a referência para a folha de estilo
+    var stylesheet = document.styleSheets[0];
+
+    // Adicionando uma nova regra na folha de estilo
+    stylesheet.addRule("p", "color: red;");
+
+    // Obtendo a referência para a folha de estilo
+    var stylesheet = document.styleSheets[0];
+
+  </script>
 </body>
 </html>
